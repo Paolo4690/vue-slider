@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Slider Vue</title>
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="root">
+		<div class="slider">
+			<div class="slide">
+				<img :src="'img/' + arrSlider[counterIndex].img" :alt="arrSlider[counterIndex].title">
+				<div class="slide-contents">
+					<h2 class="slide-title">{{ arrSlider[counterIndex].title }}</h2>
+					<p class="slide-text">{{ arrSlider[counterIndex].text }}</p>
+				</div>
+			</div>
+
+			<div class="thumbs">
+				<div @click="counterIndex = index" v-for="(item, index) in arrSlider" class="thumb" :class="index == counterIndex ? 'active' : ''">
+					<img :src="'img/' + item.img" :alt="item.title">
+				</div>
+
+				<button @click="prev()" class="btn-control btn-previus">&and;</button>
+				<button @click="next()" class="btn-control btn-next">&or;</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
