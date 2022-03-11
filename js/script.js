@@ -29,6 +29,7 @@ const app = new Vue({
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam'
             },
         ],
+        timer: '',
     },
     methods:{
         next() {
@@ -45,5 +46,14 @@ const app = new Vue({
                 this.counterIndex--
             }
         },
+        startRotation() {
+            this.timer = setInterval(this.next, 3000);
+        },
+        stopRotation(){
+            clearInterval(this.timer)
+        }
     },
+    created() {
+        this.startRotation()
+    }
 })
