@@ -38,7 +38,7 @@ const app = new Vue({
             } else {
                 this.counterIndex++
             }
-            this.resetRotation()        //NON SO SE FUNZIONA COSI
+            this.resetRotation(this.counterIndex)
         },
         prev() {
             if (this.counterIndex == 0) {
@@ -46,7 +46,7 @@ const app = new Vue({
             } else {
                 this.counterIndex--
             }
-            this.resetRotation()        //NON SO SE FUNZIONA COSI
+            this.resetRotation(this.counterIndex)
         },
         startRotation() {
             this.timer = setInterval(this.next, 3000);
@@ -54,9 +54,10 @@ const app = new Vue({
         stopRotation(){
             clearInterval(this.timer)
         },
-        resetRotation () {        //NON SO SE FUNZIONA COSI
+        resetRotation(index) {
             clearInterval(this.timer)
             this.startRotation()
+            this.counterIndex = index
         }
     },
     created() {
